@@ -1,0 +1,14 @@
+<div *ngIf="todo">
+
+    <h2>{{todo.name}}</h2>
+    <div>
+        <label>id: </label> {{todo.id}}
+    </div>
+    <div>
+        <label>name: </label>
+        <input [(ngModel)]="todo.name"/>
+    </div>
+
+    <button (click)="goBack()">Back</button>
+
+</div>

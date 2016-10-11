@@ -1,6 +1,19 @@
+<h3>Todos</h3>
+
 <input [(ngModel)]="new" placeholder="name"/>
 <button (click)="add(new)">Add</button>
 
-<div *ngFor="let todo of todos">
-    {{todo.name}}
+<div>
+        <div *ngFor="let todo of todos" (click)="onSelect(todo)"
+        [class.done]="todo.done">
+            {{todo.name}}
+        </div>
+</div>
+
+<hr>
+
+<my-todos-detail [todo]="selectedTodo"></my-todos-detail>
+
+<div *ngIf="selectedTodo">
+    <label>{{selectedTodo.name}} {{selectedTodo.done}}</label>
 </div>

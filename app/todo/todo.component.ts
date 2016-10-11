@@ -1,27 +1,35 @@
 import {Component, OnInit} from '@angular/core';
 import {Todo} from "../domain/todo";
-import {TodoService} from "../services/todo.servive";
+import {TodoService} from "../services/todo.service";
 
 @Component({
     moduleId: module.id,
-    selector: 'my-todo',
-    templateUrl: 'todo.component.html'
+    templateUrl: 'todo.component.html',
+    styleUrls: ['todo.component.css'],
+    selector: 'my-todos'
 })
 export class TodoComponent implements OnInit{
-    todos: Todo[] = [];
 
-    constructor(private todoServie: TodoService){
+    selectedTodo: Todo;
+
+    todos: Todo [] = [];
+
+    constructor(private todoService:TodoService){
         
     }
 
     ngOnInit():void {
-        this.todoServie.getTodos()
+        this.todoService.getTodos()
             .then(todos => this.todos = todos);
     }
 
-    add(name: string): void{
+    add(name:string):void {
 
         this.todos.push({id: undefined, name: name, done: false});
     }
 
+    onSelect(todo:Todo):void{
+        todo.done = !todo.done;
+        this.selectedTodo = todo;
+    }
 }

@@ -2,12 +2,15 @@ import {Component} from '@angular/core';
 
 @Component({
     selector: 'my-app',
-    template: `<h1>{{hello}}</h1>
-<my-todo></my-todo>
+    template: `
+    <h1>{{title}}</h1>
+    <nav>
+    <a routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/todo">Todo</a>
+</nav>
+    <router-outlet></router-outlet>
     `
 })
 export class AppComponent {
-
-    hello:string = "Hello world";
-
+    title = 'Todo App'
 }

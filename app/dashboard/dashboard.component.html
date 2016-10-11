@@ -1,0 +1,8 @@
+<h3>Todos not done</h3>
+
+<div>
+    <div *ngFor="let todo of todos" (click)="gotoDetail(todo)"
+         [class.done]="todo.done">
+        {{todo.name}}
+    </div>
+</div>
